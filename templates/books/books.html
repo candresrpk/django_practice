@@ -1,0 +1,46 @@
+{% extends '../base.html' %}
+
+{% block title %} BookStore {% endblock %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-header">
+            <a name="" id="" class="btn btn-success" href="{% url 'books:create_book' %}" role="button">Create A Book</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Books</h4>
+
+            <div class="table-responsive">
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Titile</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row">0</td>
+                            <td>Django</td>
+                            <td>Python</td>
+                            <td>image.png</td>
+                            <td>libro sobre programacion en django</td>
+                            <td>Editar | Eliminar</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+
+        </div>
+        <div class="card-footer text-muted">
+        </div>
+    </div>
+
+{% endblock %}
