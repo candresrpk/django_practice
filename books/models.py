@@ -1,19 +1,18 @@
 from django.db import models
 
-# Create your models here.
-class Category(models.Model):
-    name = models.CharField(
+
+class Book(models.Model):
+
+    title = models.CharField(
+        verbose_name='Title',
         max_length=150
     )
+    description = models.TextField(verbose_name='Description')
+    image = models.ImageField(upload_to='images/', verbose_name='Image', null=True)
 
-
-# class Book(models.Model):
-#     category = models.ForeignKey(
-#         Category,
-#         on_delete=models.CASCADE
-#     )
-#     title = models.CharField(
-#         max_length=150
-#     )
-#     description = models.TextField()
-#     image = models.ImageField()
+    def __str__(self) -> str:
+        return f'Titulo: {self.title}  Description {self.description}'
+    
+    def delete(self, using=None , keep_parente=False):
+        self.image.storage.delete(self.image.name)
+        super().delete()

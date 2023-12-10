@@ -25,14 +25,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td scope="row">0</td>
-                            <td>Django</td>
-                            <td>Python</td>
-                            <td>image.png</td>
-                            <td>libro sobre programacion en django</td>
-                            <td>Editar | Eliminar</td>
-                        </tr>
+                        {% for book in books %}
+
+                            <tr>
+                                <td scope="row">{{ book.id }}</td>
+                                <td>{{book.title}}</td>
+                                <td>{{book.category}}</td>
+                                <td>
+                                    <img src="{{book.image.url}}" height="100">
+                                </td>
+                                <td>{{book.description}}</td>
+                                <td> 
+                                    <a class="btn btn-info" href="{% url 'books:edit_book' book.id %}" role="button">Edit</a>
+                                    | 
+                                    <a class="btn btn-danger" href="{% url 'books:delete_book' book.id %}" role="button">Delete</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
                     </tbody>
                 </table>
             </div>
